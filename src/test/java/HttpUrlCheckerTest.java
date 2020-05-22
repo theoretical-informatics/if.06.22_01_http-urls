@@ -21,12 +21,10 @@
  * PROVIDED HEREUNDER IS PROVIDED "AS IS". HTBLA LEONDING HAS NO OBLIGATION
  * TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
  */
-import org.junit.Test;
 
+import org.junit.jupiter.api.Test;
 import java.util.regex.Matcher;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class HttpUrlCheckerTest {
 
@@ -37,15 +35,15 @@ public class HttpUrlCheckerTest {
 
     private void checkRegex(final String httpString) {
         Matcher matcher = HttpUrlChecker.getMatcher(httpString);
-        assertThat(matcher.find(), is(true));
-        assertThat(matcher.group(), is(httpString));
-        assertThat(matcher.find(), is(false));
+        assertTrue(matcher.find());
+        assertEquals(httpString, matcher.group());
+        assertFalse(matcher.find());
     }
 
     @Test
     public void testMissingDomain() {
         Matcher matcher = HttpUrlChecker.getMatcher("http://tooshort");
-        assertThat(matcher.find(), is(false));
+        assertFalse(matcher.find());
     }
 
     @Test
@@ -81,31 +79,31 @@ public class HttpUrlCheckerTest {
     @Test
     public void testInvalidSchemeName() {
         Matcher matcher = HttpUrlChecker.getMatcher("htt://www.gmail.com");
-        assertThat(matcher.find(), is(false));
+        assertFalse(matcher.find());
     }
 
     @Test
     public void testHostWithHyphenAtBegin() {
         Matcher matcher = HttpUrlChecker.getMatcher("http://-37.com");
-        assertThat(matcher.find(), is(false));
+        assertFalse(matcher.find());
     }
 
     @Test
     public void testHostWithHyphenAtEnd() {
         Matcher matcher = HttpUrlChecker.getMatcher("http://37-.com");
-        assertThat(matcher.find(), is(false));
+        assertFalse(matcher.find());
     }
 
     @Test
     public void testDomainWithHyphenAtBegin() {
         Matcher matcher = HttpUrlChecker.getMatcher("http://www.-37.com");
-        assertThat(matcher.find(), is(false));
+        assertFalse(matcher.find());
     }
 
     @Test
     public void testDomainWithHyphenAtEnd() {
         Matcher matcher = HttpUrlChecker.getMatcher("http://www.37-.com");
-        assertThat(matcher.find(), is(false));
+        assertFalse(matcher.find());
     }
 
 

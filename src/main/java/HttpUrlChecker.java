@@ -21,9 +21,3 @@
  * PROVIDED HEREUNDER IS PROVIDED "AS IS". HTBLA LEONDING HAS NO OBLIGATION
  * TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
  */
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-public class HttpUrlChecker {
-
-}
