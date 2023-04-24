@@ -5,6 +5,7 @@
 In this assignment you are to develop a regular expression which is able to check a given string whether it is a valid HTTP url string. The requirements are given in the form of unit tests.
 
 ### Trained Skills
+- Regex
 - Working with Intellij idea
 - Working with Java
 - Reading unit tests (understand requirements by examples)

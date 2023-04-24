@@ -34,7 +34,7 @@ public class HttpUrlCheckerTest {
     }
 
     private void checkRegex(final String httpString) {
-        Matcher matcher = HttpUrlChecker.getMatcher(httpString);
+        var matcher = HttpUrlChecker.getMatcher(httpString);
         assertTrue(matcher.find());
         assertEquals(httpString, matcher.group());
         assertFalse(matcher.find());
@@ -42,7 +42,7 @@ public class HttpUrlCheckerTest {
 
     @Test
     public void testMissingDomain() {
-        Matcher matcher = HttpUrlChecker.getMatcher("http://tooshort");
+        var matcher = HttpUrlChecker.getMatcher("http://tooshort");
         assertFalse(matcher.find());
     }
 
@@ -78,31 +78,31 @@ public class HttpUrlCheckerTest {
 
     @Test
     public void testInvalidSchemeName() {
-        Matcher matcher = HttpUrlChecker.getMatcher("htt://www.gmail.com");
+        var matcher = HttpUrlChecker.getMatcher("htt://www.gmail.com");
         assertFalse(matcher.find());
     }
 
     @Test
     public void testHostWithHyphenAtBegin() {
-        Matcher matcher = HttpUrlChecker.getMatcher("http://-37.com");
+        var matcher = HttpUrlChecker.getMatcher("http://-37.com");
         assertFalse(matcher.find());
     }
 
     @Test
     public void testHostWithHyphenAtEnd() {
-        Matcher matcher = HttpUrlChecker.getMatcher("http://37-.com");
+        var matcher = HttpUrlChecker.getMatcher("http://37-.com");
         assertFalse(matcher.find());
     }
 
     @Test
     public void testDomainWithHyphenAtBegin() {
-        Matcher matcher = HttpUrlChecker.getMatcher("http://www.-37.com");
+        var matcher = HttpUrlChecker.getMatcher("http://www.-37.com");
         assertFalse(matcher.find());
     }
 
     @Test
     public void testDomainWithHyphenAtEnd() {
-        Matcher matcher = HttpUrlChecker.getMatcher("http://www.37-.com");
+        var matcher = HttpUrlChecker.getMatcher("http://www.37-.com");
         assertFalse(matcher.find());
     }
 

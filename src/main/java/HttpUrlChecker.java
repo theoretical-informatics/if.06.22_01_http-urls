@@ -1,3 +1,5 @@
+import java.util.regex.Matcher;
+
 /*
  * Copyright ©2018. Created by P. Bauer (p.bauer@htl-leonding.ac.at),
  * Department of Informatics and Media Technique, HTBLA Leonding,
@@ -21,3 +23,9 @@
  * PROVIDED HEREUNDER IS PROVIDED "AS IS". HTBLA LEONDING HAS NO OBLIGATION
  * TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
  */
+class HttpUrlChecker {
+
+    public static Matcher getMatcher(String urlString) {
+        return null;
+    }
+}
