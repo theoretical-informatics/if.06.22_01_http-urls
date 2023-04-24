@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class HttpUrlCheckerTest {
 
     @Test
-    public void testShortestPossible() {
+    public void itShouldMatch_GivenTheShortestUrlPossible() {
         checkRegex("http://b.com");
     }
 
@@ -41,67 +41,67 @@ public class HttpUrlCheckerTest {
     }
 
     @Test
-    public void testMissingDomain() {
+    public void itShouldNotMatch_GivenAUrlWithoutAnyDomain() {
         var matcher = HttpUrlChecker.getMatcher("http://tooshort");
         assertFalse(matcher.find());
     }
 
     @Test
-    public void testDomainAndSubdomain() {
+    public void itShouldMatch_GivenATopLevelDomainAndASubdomain() {
         checkRegex("http://www.bajupa.com");
     }
 
     @Test
-    public void testMoreSubdomains() {
+    public void itShouldMatch_GivenMoreThanOneSubdomains() {
         checkRegex("http://www.flll.jku.ac.at");
     }
 
     @Test
-    public void testDomainsWithDash() {
+    public void itShouldMatch_GivenADomainNameWithADash() {
         checkRegex("http://www.htl-leonding.ac.at");
     }
 
     @Test
-    public void testDomainWithNumbers() {
+    public void itShouldMatch_GivenADomainStartingWithANumber() {
         checkRegex("http://456bereastreet.com");
     }
 
     @Test
-    public void testDomainWithNumbersOnly() {
+    public void itShouldMatch_GivenASubDomainWithNumbersOnly() {
         checkRegex("http://37.com");
     }
 
     @Test
-    public void testHttpsScheme() {
+    public void itShouldMatch_GivenAnHttpsScheme() {
         checkRegex("https://google.com");
     }
 
     @Test
-    public void testInvalidSchemeName() {
+    public void itShouldNotMatch_GivenAnInvalidScheme() {
         var matcher = HttpUrlChecker.getMatcher("htt://www.gmail.com");
         assertFalse(matcher.find());
     }
 
     @Test
-    public void testHostWithHyphenAtBegin() {
+    public void itShouldNotMatch_GivenANameStartingWithADash() {
         var matcher = HttpUrlChecker.getMatcher("http://-37.com");
         assertFalse(matcher.find());
     }
 
     @Test
-    public void testHostWithHyphenAtEnd() {
+    public void itShouldNotMatch_GivenANameEndingWithADash() {
         var matcher = HttpUrlChecker.getMatcher("http://37-.com");
         assertFalse(matcher.find());
     }
 
     @Test
-    public void testDomainWithHyphenAtBegin() {
+    public void itShouldNotMatch_GivenASubdomainStartingWithADash() {
         var matcher = HttpUrlChecker.getMatcher("http://www.-37.com");
         assertFalse(matcher.find());
     }
 
     @Test
-    public void testDomainWithHyphenAtEnd() {
+    public void itShouldNotMatch_GivenASubdomainEndingWithADash() {
         var matcher = HttpUrlChecker.getMatcher("http://www.37-.com");
         assertFalse(matcher.find());
     }
